@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .img-thumbnail {
+            max-height: 100px;
+            object-fit: cover;
+        }
+
+        .position-relative {
+            transition: transform 0.2s;
+        }
+
+        .position-relative:hover {
+            transform: scale(1.05);
+        }
+
+        .badge.bg-danger {
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .form-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            transition: border-color 0.15s ease-in-out;
+        }
+
+        .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-white">
+                    <h2 class="mb-0">Редактировать объявление</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Основная информация -->
+                        <div class="mb-3">
+                            <label for="id_title" class="form-label">Название*</label>
+                            <input placeholder="{{ ad.title }}" type="text" class="form-control" id="id_title"
+                                   name="title"
+                                   value="{{ form.title.value|default:'' }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_description" class="form-label">Описание*</label>
+                            <textarea placeholder="{{ ad.description }}" class="form-control" id="id_description"
+                                      name="description"
+                                      rows="5" required>{{ form.description.value|default:'' }}</textarea>
+                        </div>
+
+                        <!-- Категория и состояние -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="id_category" class="form-label">Категория*</label>
+                                <select class="form-select" id="id_category" name="category" required>
+                                    {% for value, label in form.category.field.choices %}
+                                        <option value="{{ value }}"
+                                                {% if form.category.value == value %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="id_condition" class="form-label">Состояние*</label>
+                                <select class="form-select" id="id_condition" name="condition" required>
+                                    {% for value, label in form.condition.field.choices %}
+                                        <option value="{{ value }}"
+                                                {% if form.condition.value == value or value == 'good' and not form.condition.value %}selected{% endif %}>
+                                            {{ label }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Изображения -->
+                        {#                        <div class="mb-3">#}
+                        {#                            <label class="form-label">Фотографии товара</label>#}
+                        {#                            <div class="mb-2">#}
+                        {#                                {% for image in ad.images.all %}#}
+                        {#                                    <div class="d-inline-block position-relative me-2 mb-2">#}
+                        {#                                        <img src="{{ image.image.url }}" class="img-thumbnail" width="100" alt="Фото товара">#}
+                        {#                                        <a href="{% url 'delete_image' image.id %}" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger p-2" title="Удалить">#}
+                        {#                                            ×#}
+                        {#                                        </a>#}
+                        {#                                    </div>#}
+                        {#                                {% endfor %}#}
+                        {#                            </div>#}
+                        {#                            <input type="file" class="form-control" name="images" multiple accept="image/*">#}
+                        {#                            <div class="form-text">Можно загрузить до 5 фотографий</div>#}
+                        {#                        </div>#}
+
+                        <!-- Дополнительные поля -->
+                        {#                        <div class="mb-3">#}
+                        {#                            <label for="id_location" class="form-label">Местоположение</label>#}
+                        {#                            <input type="text" class="form-control" id="id_location" name="location"#}
+                        {#                                   value="{{ form.location.value|default:'' }}">#}
+                        {#                        </div>#}
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="id_is_active" name="is_active"
+                                   {% if form.is_active.value %}checked{% endif %}>
+                            <label class="form-check-label" for="id_is_active">Активное объявление</label>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{% url 'ad_card' pk=ad.id %}" class="btn btn-secondary me-md-2">Отмена</a>
+                            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

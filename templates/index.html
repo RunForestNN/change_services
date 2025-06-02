@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сервис обмена товарами</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/style.css' %}"/>
+    <style>
+        /* Base styles */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --gray-color: #6c757d;
+  --success-color: #4cc9f0;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header styles */
+.header {
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f5;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  width: 300px;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 0.5rem;
+  outline: none;
+}
+
+.user-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Button styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: var(--border-radius);
+  margin: 2rem 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--gray-color);
+  margin-bottom: 2rem;
+}
+
+/* Offers section */
+.offers {
+  padding: 3rem 0;
+}
+
+.offers h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.offer-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.offer-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.offer-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.offer-card-content {
+  padding: 1.5rem;
+}
+
+.offer-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.offer-card p {
+  color: var(--gray-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.offer-card .btn {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* Features section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.feature {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.feature i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer styles */
+.footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero, .offers, .features {
+  animation: fadeIn 0.8s ease-out;
+}
+    </style>
+    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+</head>
+<body>
+<header class="header">
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">TradeHub</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url  'person_page' %}">Предложения</a></li>
+                <li><a href="{% url 'person_page' %}">Профиль</a></li>
+
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Поиск товаров...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="user-actions">
+                <a href="{% url 'create_offer' %}" class="btn btn-primary">Создать предложение</a>
+                <a href="{% url 'login' %}" class="btn btn-outline">Войти</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="main">
+    <div class="container">
+        <section class="hero">
+            <h1>Обменивайтесь товарами с пользой</h1>
+            <p>Найдите то, что ищете, и предложите обмен</p>
+            <a href="{% url 'create_offer' %}" class="btn btn-primary">Начать обмен</a>
+        </section>
+
+        <section class="offers" id="offers">
+            <h2>Предложения</h2>
+
+            <div class="offer-cards">
+                {% for elem in all_ads %}
+                    <div class="offer-card">
+
+
+
+                        <h3>{{ elem.title }}</h3>
+                        <p>Описание товара:{{ elem.description }}</p>
+                        <p>Автор:{{ elem.user }}</p>
+                        <p>Состояние товара:{{ elem.condition }}</p>
+                        <p>Дата публикации:{{ elem.created_at }}</p>
+                        <a href="{% url 'ad_card' pk=elem.id %}" class="btn btn-outline">Посмотреть</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-shield-check"></i>
+                <h3>Безопасная сделка</h3>
+                <p>Мы гарантируем безопасность всех обменов</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-user-group"></i>
+                <h3>Большая аудитория</h3>
+                <p>Более 100 000 активных пользователей</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-fast-forward"></i>
+                <h3>Быстрый обмен</h3>
+                <p>Находите нужные товары за считанные минуты</p>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <ul>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="#">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

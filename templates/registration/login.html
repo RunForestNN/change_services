@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --primary-hover: #3a5fce;
+            --danger-color: #e74a3b;
+            --warning-color: #f6c23e;
+            --info-color: #36b9cc;
+            --text-color: #5a5c69;
+            --light-color: #f8f9fc;
+            --border-color: #d1d3e2;
+            --shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .col-md-6, .col-lg-4 {
+            position: relative;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-4 {
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+            }
+        }
+
+        .mt-5 {
+            margin-top: 3rem !important;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid var(--border-color);
+            border-radius: 0.35rem;
+            transition: var(--transition);
+        }
+
+        .card.shadow {
+            box-shadow: var(--shadow);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1.5rem rgba(58, 59, 69, 0.2);
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.25rem;
+        }
+
+        .p-4 {
+            padding: 1.5rem !important;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .alert {
+            position: relative;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.35rem;
+            font-size: 0.875rem;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+
+        .form-label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #6e707e;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid var(--border-color);
+            border-radius: 0.35rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            color: #6e707e;
+            background-color: #fff;
+            border-color: #bac8f3;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            background-color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.35rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .d-grid {
+            display: grid !important;
+        }
+
+        .gap-2 {
+            gap: 0.5rem !important;
+        }
+
+        .mt-3 {
+            margin-top: 1rem !important;
+        }
+
+        .text-decoration-none {
+            text-decoration: none !important;
+        }
+
+        a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .alert {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 576px) {
+            body {
+                padding: 10px;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">Вход в систему</h2>
+
+                    {% if form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            Неверное имя пользователя или пароль. Пожалуйста, попробуйте снова.
+                        </div>
+                    {% endif %}
+
+                    {% if next %}
+                        {% if user.is_authenticated %}
+                        <div class="alert alert-warning" role="alert">
+                            У вашей учетной записи нет доступа к этой странице.
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info" role="alert">
+                            Пожалуйста, войдите, чтобы увидеть эту страницу.
+                        </div>
+                        {% endif %}
+                    {% endif %}
+
+                    <form method="post" action="{% url 'person_page' %}">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Имя пользователя</label>
+                            <input type="text" name="username" class="form-control" id="id_username" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label">Пароль</label>
+                            <input type="password" name="password" class="form-control" id="id_password" required>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Войти</button>
+                            <input type="hidden" name="next" value="{{ next|default:'/' }}">
+                        </div>
+                    </form>
+
+{#                    <div class="mt-3 text-center">#}
+{#                        <p>Нет аккаунта? <a href="{% url 'register' %}" class="text-decoration-none">Зарегистрируйтесь</a></p>#}
+{#                    </div>#}
+
+                    {% if not user.is_authenticated %}
+                    <div class="mt-3 text-center">
+                        <p>Нет аккаунта? <a href="{% url 'register' %}" class="text-decoration-none">Зарегистрируйтесь</a></p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
