@@ -1,0 +1,21 @@
+# Файлы окружения
+.env
+.env.local
+*.env
+.env/*
+
+#Виртуальное окружение
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+venv/
+env/
+.venv/
+ENV/
+
+#IDE
+.idea/
+*.swp
+*.swo
+*.sublime-*
