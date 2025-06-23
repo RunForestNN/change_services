@@ -55,12 +55,20 @@ pip install -r requirements.txt
 ### 3.Настройка базы данных
 Создайте файл .env в корне проекта:
 ```bash
-ini
+#Postgres
 DB_NAME=
 DB_USER=
 DB_PASSWORD=
 DB_HOST=
 DB_PORT=
+
+#Email
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+DEFAULT_FROM_EMAIL=
+
+#Redis
+REDIS_URL=
 ```
 ### 4.Миграции
 ```bash
