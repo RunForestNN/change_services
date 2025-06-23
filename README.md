@@ -47,38 +47,41 @@
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
-
-Установка зависимостей
-bash
+```
+### 2.Установка зависимостей
+```bash
 pip install -r requirements.txt
-
-Настройка базы данных
+```
+### 3.Настройка базы данных
 Создайте файл .env в корне проекта:
-
+```bash
 ini
-DB_NAME=marketplace
-DB_USER=postgres
-DB_PASSWORD=yourpassword
-DB_HOST=localhost
-DB_PORT=5432
-
-Миграции
-bash
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+```
+### 4.Миграции
+```bash
 python manage.py makemigrations
 python manage.py migrate
-
-Запуск сервера
-bash
+```
+### 5.Запуск сервера
+```bash
 # Основной сервер
 python manage.py runserver
-
-# Celery worker (в отдельном терминале)
-celery -A testJob worker --loglevel=info
-
-# Redis (в отдельном терминале)
+```
+### 6.Celery worker (в отдельном терминале)
+```bash
+celery -A testJob worker --pool=solo -l info
+```
+### 7.Redis (в отдельном терминале)
+```bash
 redis-server
-
-Docker-развертывание
-bash
+```
+### Docker-развертывание
+```bash
 docker-compose up --build
+```
 Система будет доступна на порту 8000.
