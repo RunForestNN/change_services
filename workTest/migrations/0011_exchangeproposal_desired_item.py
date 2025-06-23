@@ -5,15 +5,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0010_exchangeproposal_offered_item_alter_ad_user'),
+        ("workTest", "0010_exchangeproposal_offered_item_alter_ad_user"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='exchangeproposal',
-            name='desired_item',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='desired_item', to='workTest.ad'),
+            model_name="exchangeproposal",
+            name="desired_item",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="desired_item",
+                to="workTest.ad",
+            ),
         ),
     ]

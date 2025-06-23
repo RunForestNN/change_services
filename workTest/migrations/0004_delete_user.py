@@ -4,13 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0003_ad_category_ad_condition_ad_created_at_and_more'),
+        ("workTest", "0003_ad_category_ad_condition_ad_created_at_and_more"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='User',
+            name="User",
         ),
     ]

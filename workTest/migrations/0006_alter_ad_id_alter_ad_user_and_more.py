@@ -6,31 +6,50 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0005_alter_ad_created_at'),
+        ("workTest", "0005_alter_ad_created_at"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ad',
-            name='id',
+            model_name="ad",
+            name="id",
             field=models.IntegerField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='ad',
-            name='user',
-            field=models.ForeignKey(default='', max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="ad",
+            name="user",
+            field=models.ForeignKey(
+                default="",
+                max_length=20,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='exchangeproposal',
-            name='ad_receiver',
-            field=models.ForeignKey(default='', max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ad_receiver', to='workTest.ad'),
+            model_name="exchangeproposal",
+            name="ad_receiver",
+            field=models.ForeignKey(
+                default="",
+                max_length=20,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="ad_receiver",
+                to="workTest.ad",
+            ),
         ),
         migrations.AlterField(
-            model_name='exchangeproposal',
-            name='ad_sender',
-            field=models.ForeignKey(default='', max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ad_sender', to='workTest.ad'),
+            model_name="exchangeproposal",
+            name="ad_sender",
+            field=models.ForeignKey(
+                default="",
+                max_length=20,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="ad_sender",
+                to="workTest.ad",
+            ),
         ),
     ]

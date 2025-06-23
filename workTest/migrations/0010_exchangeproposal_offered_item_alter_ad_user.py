@@ -6,21 +6,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0009_alter_ad_created_at'),
+        ("workTest", "0009_alter_ad_created_at"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='exchangeproposal',
-            name='offered_item',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='offered_item', to='workTest.ad'),
+            model_name="exchangeproposal",
+            name="offered_item",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="offered_item",
+                to="workTest.ad",
+            ),
         ),
         migrations.AlterField(
-            model_name='ad',
-            name='user',
-            field=models.ForeignKey(max_length=20, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="ad",
+            name="user",
+            field=models.ForeignKey(
+                max_length=20,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

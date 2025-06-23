@@ -364,6 +364,27 @@
                         </div>
 
                         <div class="row">
+                            <label for="id_email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input
+                                        type="email" name="email"
+                                        class="form-control"
+                                        id="id_email"
+
+                                        value="{{ form.email.value|default:'' }}"
+                                        required
+                                        placeholder="example@mail.ru"
+                                >
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors|first }}
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="id_password1" class="form-label">Пароль*</label>
                                 <input type="password" name="password1" class="form-control" id="id_password1" required>
@@ -401,8 +422,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 </body>

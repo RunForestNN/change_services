@@ -4,19 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0015_exchangeproposal_is_active'),
+        ("workTest", "0015_exchangeproposal_is_active"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='exchangeproposal',
-            name='is_active',
+            model_name="exchangeproposal",
+            name="is_active",
         ),
         migrations.AddField(
-            model_name='ad',
-            name='is_active',
+            model_name="ad",
+            name="is_active",
             field=models.BooleanField(default=True),
         ),
     ]

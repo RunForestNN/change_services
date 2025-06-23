@@ -4,20 +4,28 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0011_exchangeproposal_desired_item'),
+        ("workTest", "0011_exchangeproposal_desired_item"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='exchangeproposal',
-            name='created_at',
+            model_name="exchangeproposal",
+            name="created_at",
             field=models.DateTimeField(auto_now_add=True, max_length=20),
         ),
         migrations.AlterField(
-            model_name='exchangeproposal',
-            name='status',
-            field=models.CharField(choices=[('pending', 'На рассмотрении'), ('accepted', 'Принято'), ('rejected', 'Отклонено'), ('completed', 'Завершено')], default='pending', max_length=20),
+            model_name="exchangeproposal",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("pending", "На рассмотрении"),
+                    ("accepted", "Принято"),
+                    ("rejected", "Отклонено"),
+                    ("completed", "Завершено"),
+                ],
+                default="pending",
+                max_length=20,
+            ),
         ),
     ]

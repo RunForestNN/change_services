@@ -4,25 +4,45 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0006_alter_ad_id_alter_ad_user_and_more'),
+        ("workTest", "0006_alter_ad_id_alter_ad_user_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ad',
-            name='category',
-            field=models.CharField(choices=[('book', 'Книги'), ('table', 'Столы'), ('clother', 'Одежда'), ('toys', 'Игрушки')], default='new', max_length=20, verbose_name='Категория товара'),
+            model_name="ad",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("book", "Книги"),
+                    ("table", "Столы"),
+                    ("clother", "Одежда"),
+                    ("toys", "Игрушки"),
+                ],
+                default="new",
+                max_length=20,
+                verbose_name="Категория товара",
+            ),
         ),
         migrations.AlterField(
-            model_name='ad',
-            name='condition',
-            field=models.CharField(choices=[('new', 'Новое'), ('perfect', 'Отличное'), ('good', 'Хорошее'), ('satisfactory', 'Удовлетворительное'), ('broken', 'Требует ремонта')], default='good', max_length=20, verbose_name='Состояние товара'),
+            model_name="ad",
+            name="condition",
+            field=models.CharField(
+                choices=[
+                    ("new", "Новое"),
+                    ("perfect", "Отличное"),
+                    ("good", "Хорошее"),
+                    ("satisfactory", "Удовлетворительное"),
+                    ("broken", "Требует ремонта"),
+                ],
+                default="good",
+                max_length=20,
+                verbose_name="Состояние товара",
+            ),
         ),
         migrations.AlterField(
-            model_name='ad',
-            name='created_at',
+            model_name="ad",
+            name="created_at",
             field=models.DateTimeField(max_length=20),
         ),
     ]

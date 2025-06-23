@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0013_alter_exchangeproposal_ad_receiver_and_more'),
+        ("workTest", "0013_alter_exchangeproposal_ad_receiver_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ad',
-            name='description',
-            field=models.CharField(default='', max_length=200),
+            model_name="ad",
+            name="description",
+            field=models.CharField(default="", max_length=200),
         ),
     ]

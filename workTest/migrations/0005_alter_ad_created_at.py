@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0004_delete_user'),
+        ("workTest", "0004_delete_user"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ad',
-            name='created_at',
-            field=models.DateTimeField(default='', max_length=20),
+            model_name="ad",
+            name="created_at",
+            field=models.DateTimeField(default="", max_length=20),
         ),
     ]

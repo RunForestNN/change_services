@@ -5,20 +5,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('workTest', '0012_alter_exchangeproposal_created_at_and_more'),
+        ("workTest", "0012_alter_exchangeproposal_created_at_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='exchangeproposal',
-            name='ad_receiver',
-            field=models.ForeignKey(default='', max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='receiver', to='workTest.ad'),
+            model_name="exchangeproposal",
+            name="ad_receiver",
+            field=models.ForeignKey(
+                default="",
+                max_length=20,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="receiver",
+                to="workTest.ad",
+            ),
         ),
         migrations.AlterField(
-            model_name='exchangeproposal',
-            name='ad_sender',
-            field=models.ForeignKey(default='', max_length=20, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='sender', to='workTest.ad'),
+            model_name="exchangeproposal",
+            name="ad_sender",
+            field=models.ForeignKey(
+                default="",
+                max_length=20,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="sender",
+                to="workTest.ad",
+            ),
         ),
     ]
